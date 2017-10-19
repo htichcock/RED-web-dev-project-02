@@ -1,0 +1,34 @@
+.dynamic-header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  width: 100%;
+  
+  &__logo-img {
+    flex: 100%;
+    padding-top: 3rem;
+  }
+  &__form {
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+  &__instructions {
+    margin: 2rem;
+  }
+  &--cover {
+    min-height: 30rem;
+    height: 85vh;
+    &__logo-img {
+      height: 25rem;
+    }
+  }
+  &--banner {
+    height: auto;
+    &__logo-img {
+      height: 15rem;
+    }
+  }
+
+}
