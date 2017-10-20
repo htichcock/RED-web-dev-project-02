@@ -3,14 +3,15 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     browserSync = require('browser-sync'),
     eslint = require('gulp-eslint'),
-    plumber = require('gulp-plumber'),
+    prettyError = require('gulp-prettyerror'),
+    plumber = require('gulp-plumber')
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano');
 
 gulp.task('sass', function() {
   gulp.src('./sass/style.scss')
-      .pipe(plumber())
+      .pipe(prettyError())
       .pipe(sass())
       .pipe(autoprefixer({
         browsers: ['last 2 versions']

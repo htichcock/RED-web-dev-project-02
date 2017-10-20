@@ -1,3 +1,50 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
@@ -10,6 +57,12 @@ body {
   font-size: 1.6rem;
   color: #ffffff;
   background-color: #000000; }
+  @media screen and (min-width: 600px) {
+    body {
+      font-size: 1.1rem; } }
+  @media screen and (min-width: 1000px) {
+    body {
+      font-size: 1.6rem; } }
 
 .dynamic-header {
   display: -webkit-box;
@@ -28,25 +81,79 @@ body {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   width: 100%; }
+  .dynamic-header *, .dynamic-header {
+    -webkit-transition: 1s;
+    transition: 1s; }
+  @media screen and (min-width: 600px) {
+    .dynamic-header {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-flow: row nowrap;
+              flex-flow: row nowrap; } }
+  @media screen and (min-width: 1000px) {
+    .dynamic-header {
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start; } }
   .dynamic-header__logo-img {
-    -webkit-box-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
-    padding-top: 3rem; }
+    -webkit-box-flex: 0;
+        -ms-flex: 0 100%;
+            flex: 0 100%; }
+    @media screen and (min-width: 600px) {
+      .dynamic-header__logo-img {
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 0%;
+                flex: 0 0 0%;
+        margin: 0 3.2rem 0 3.2rem; } }
+    @media screen and (min-width: 1000px) {
+      .dynamic-header__logo-img {
+        margin: 0 6.4rem 0 3.2rem; } }
   .dynamic-header__form {
     margin-bottom: 5rem;
     text-align: center; }
+    @media screen and (min-width: 600px) {
+      .dynamic-header__form {
+        margin: 0.8rem 10rem 2rem 3.2rem;
+        text-align: left; } }
   .dynamic-header__instructions {
-    margin: 2rem; }
+    margin: 1.6rem 0 1.6rem;
+    font-size: 1.28rem; }
+    @media screen and (min-width: 600px) {
+      .dynamic-header__instructions {
+        font-size: 1.44rem; } }
+    @media screen and (min-width: 1000px) {
+      .dynamic-header__instructions {
+        font-size: 1.6rem; } }
+  .dynamic-header__choose-section {
+    font-size: 1.76rem; }
   .dynamic-header--cover {
-    min-height: 30rem;
-    height: 85vh; }
+    min-height: 40rem;
+    height: 100vh;
+    margin: -1.44rem 0 0; }
     .dynamic-header--cover__logo-img {
-      height: 25rem; }
+      height: 22rem; }
   .dynamic-header--banner {
-    height: auto; }
+    height: auto;
+    margin: 0; }
     .dynamic-header--banner__logo-img {
       height: 15rem; }
+      @media screen and (min-width: 600px) {
+        .dynamic-header--banner__logo-img {
+          height: 6.7rem; } }
+    .dynamic-header--banner__form {
+      -ms-flex-item-align: start;
+          align-self: flex-start; }
+
+.main {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .main__loading-img {
+    width: 4rem;
+    grid-area: 1 / 1 / 2 / 2; }
 
 .footer {
   display: -webkit-box;
@@ -57,7 +164,15 @@ body {
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  margin: -4.8rem 0 4.8rem;
+  font-size: 1.44rem; }
+  @media screen and (min-width: 1000px) {
+    .footer {
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      padding: 0 0 0 3.2rem; } }
   .footer__copyright {
     color: #c2c2c2; }
     .footer__copyright--instanews {

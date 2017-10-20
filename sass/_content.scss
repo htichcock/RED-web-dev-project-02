@@ -1,0 +1,10 @@
+.main {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  &__loading-img {
+    width: 4rem;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+}
