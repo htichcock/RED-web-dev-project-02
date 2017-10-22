@@ -31,11 +31,15 @@ $(function(){
         var article = 'main__article--' + (i+1);
         var caption = val.abstract;
         var url = val.multimedia[val.multimedia.length - 1].url;
+        $('.main').append('<article class="main__article ' + article + '"><img class= "main__article-loading" alt="loading" src="images/ajax-loader.gif"></article>');
         console.log(url);
-        $('.main').append('<article class="main__article ' + article + '"><h2 class="main__caption">' + caption + '</h2></article>');
-        $('.' + article).css('background-image' , 'url(' + url + ')');
+        var img = new Image();
+        img.onload = function(){
+          $('.' + article).empty().append('<h2 class="main__caption">' + caption + '</h2>').css('background-image' , 'url(' + url + ')');
+        };
+        img.src = url;
         if (count === 12) {
-          return false;
+        return false;
         }
       });
     });

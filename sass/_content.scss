@@ -21,14 +21,25 @@
       grid-area: 1 / 1 / 2 / 1;
     }
   }
+  &__article-loading {
+    width: 4rem;
+  }
   &__caption {
     background: rgba(0,0,0,.5);
     width: 100%;
+    text-align: center;
+    align-self: flex-end;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
   }
   &__article {
     height: 40rem;
+    width: 100%;
     background-position: center center;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__article--1 {
     grid-area: 1 / 1 / 2 / 2;

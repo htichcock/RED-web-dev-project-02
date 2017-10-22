@@ -167,13 +167,30 @@ body {
     @media screen and (min-width: 1000px) {
       .main__loading-img {
         grid-area: 1 / 1 / 2 / 1; } }
+  .main__article-loading {
+    width: 4rem; }
   .main__caption {
     background: rgba(0, 0, 0, 0.5);
-    width: 100%; }
+    width: 100%;
+    text-align: center;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    font-size: 1.6rem;
+    line-height: 2.4rem; }
   .main__article {
     height: 40rem;
+    width: 100%;
     background-position: center center;
-    background-size: cover; }
+    background-size: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
   .main__article--1 {
     grid-area: 1 / 1 / 2 / 2; }
     @media screen and (min-width: 600px) {
