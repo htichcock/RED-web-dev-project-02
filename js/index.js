@@ -16,7 +16,6 @@ $(function(){
   
     //fetch content--remove loading-gif--inject stories
     $.getJSON('http://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(data){
-      $('.main__loading-img').remove();
       console.log(data);
       //check to make sure image over 400px exists
       var results = data.results.filter(function(result){
@@ -26,6 +25,7 @@ $(function(){
           }
         }
       });
+      $('.main__loading-img').remove();
       $.each(results , function( i , val ){
         var count = (i+1);
         var article = 'main__article--' + (i+1);
