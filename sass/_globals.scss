@@ -8,7 +8,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
   color: $main-color;
-  background-color: $bg-color;
+  background-color: $bkg-color;
   @include tablet{
     font-size: 1.1rem;
   }

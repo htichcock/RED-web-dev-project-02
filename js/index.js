@@ -1,4 +1,6 @@
 $(function(){
+  $('selectgit ').selectric();
+  
   $('#choose-section').on('change', function(){
 
     //change to banner
@@ -14,8 +16,8 @@ $(function(){
     $('.main').empty().append('<img class="main__loading-img" src="images/ajax-loader.gif">');
   
     //fetch content--remove loading-gif--inject stories
-    $.getJSON('http://api.nyts.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(){
-
+    $.getJSON('http://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(){
+      //same as .done() function so left empty
     }).done(function(data){
 
       //check to make sure last image over 400px exists
