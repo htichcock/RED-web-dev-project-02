@@ -5,7 +5,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.6rem;
   color: $main-color;
   background-color: $bg-color;
@@ -15,4 +15,11 @@ body {
   @include desktop {
     font-size: 1.6rem;
   }
+}
+a,
+a:hover,
+a:after {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
 }

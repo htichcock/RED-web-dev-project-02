@@ -21,22 +21,32 @@
       grid-area: 1 / 1 / 2 / 1;
     }
   }
-  &__article-loading {
-    width: 4rem;
+  // uses two classes for specificity reasons
+  & &__article--loading {
+    background-position: center;
+    background-size: 4rem 4rem;
+    background-repeat: no-repeat;
   }
   &__caption {
     background: rgba(0,0,0,.5);
+    height: auto;
     width: 100%;
     text-align: center;
     align-self: flex-end;
     font-size: 1.6rem;
     line-height: 2.4rem;
+    font-weight: 400;
+    font-style: normal;
+    &--hidden {
+      height: 0;
+    }
   }
   &__article {
     height: 40rem;
     width: 100%;
     background-position: center center;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;

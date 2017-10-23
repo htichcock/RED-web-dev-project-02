@@ -16,11 +16,10 @@ $(function(){
   
     //fetch content--remove loading-gif--inject stories
     $.getJSON('http://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(data){
-      console.log(data);
-      //check to make sure image over 400px exists
+      //check to make sure last image over 400px exists
       var results = data.results.filter(function(result){
-        for (var i =0; i < result.multimedia.length; i++) {
-          if (result.multimedia[i].height >= 400) {
+        if (result.multimedia.length){
+          if (result.multimedia[result.multimedia.length - 1].height >= 400){
             return true;
           }
         }
@@ -30,18 +29,23 @@ $(function(){
         var count = (i+1);
         var article = 'main__article--' + (i+1);
         var caption = val.abstract;
-        var url = val.multimedia[val.multimedia.length - 1].url;
-        $('.main').append('<article class="main__article ' + article + '"><img class= "main__article-loading" alt="loading" src="images/ajax-loader.gif"></article>');
-        console.log(url);
+        var nytUrl = val.short_url;
+        var imageUrl = val.multimedia[val.multimedia.length - 1].url;
+        $('.main').append('<a target="_blank" href="' + nytUrl + '"><article class="main__article main__article--loading ' + article + '"><p class="main__caption">' + caption + '</p></article>');
+        $('.' + article).css('background-image' , 'url(images/ajax-loader.gif)');
         var img = new Image();
         img.onload = function(){
-          $('.' + article).empty().append('<h2 class="main__caption">' + caption + '</h2>').css('background-image' , 'url(' + url + ')');
+          $('.' + article).removeClass('main__article--loading').css('background-image' , 'url(' + imageUrl + ')');
         };
-        img.src = url;
+        img.src = imageUrl;
         if (count === 12) {
         return false;
         }
       });
+    }).done(function(){
+
+    }).fail(function(){
+      $('.main__loading-img').empty().append('<p> Request failed. Please try again </p>');
     });
 
   });
