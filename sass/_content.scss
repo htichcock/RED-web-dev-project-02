@@ -46,7 +46,7 @@
   &__article {
     height: 40rem;
     width: 100%;
-    background-position: center center;
+    background-position: center 20%; //to avoid decapitation
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;

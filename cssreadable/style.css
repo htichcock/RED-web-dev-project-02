@@ -56,8 +56,8 @@ table {
   width: 100%; }
 
 .selectric {
-  border-radius: 6px;
-  background: #333745;
+  border: solid 1px #FFF;
+  background: #2C3E50;
   position: relative; }
   .selectric .label {
     display: block;
@@ -95,10 +95,10 @@ table {
       border-bottom: none; }
 
 .selectric-focus .selectric {
-  background: #1d2028; }
+  background: #1a252f; }
 
 .selectric-hover .selectric {
-  background: #282b36; }
+  background: #233140; }
   .selectric-hover .selectric .button {
     color: #e6e6e6; }
     .selectric-hover .selectric .button:after {
@@ -170,7 +170,7 @@ table {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #333745;
+  background: #2C3E50;
   border: 1px solid #c4c4c4;
   z-index: -1;
   -webkit-box-shadow: 0 0 10px -6px;
@@ -194,13 +194,13 @@ table {
     color: #FFF;
     cursor: pointer; }
     .selectric-items li.selected {
-      background: #5c5f6a;
+      background: #566573;
       color: #FFF; }
     .selectric-items li.highlighted {
-      background: #474b58;
+      background: #415162;
       color: #FFF; }
     .selectric-items li:hover {
-      background: #70737d;
+      background: #6b7885;
       color: #FFF; }
   .selectric-items .disabled {
     filter: alpha(opacity=50);
@@ -308,7 +308,8 @@ a:after {
         margin: 0 6.4rem 0 3.2rem; } }
   .dynamic-header__form {
     margin-bottom: 5rem;
-    text-align: center; }
+    text-align: center;
+    width: 20rem; }
     @media screen and (min-width: 600px) {
       .dynamic-header__form {
         margin: 0.8rem 10rem 2rem 3.2rem;
@@ -387,7 +388,7 @@ a:after {
   .main__article {
     height: 40rem;
     width: 100%;
-    background-position: center center;
+    background-position: center 20%;
     background-size: cover;
     background-repeat: no-repeat;
     display: -webkit-box;

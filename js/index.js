@@ -41,9 +41,7 @@ $(function(){
         var caption = val.abstract;
         var nytUrl = val.short_url;
         var imageUrl = val.multimedia[val.multimedia.length - 1].url;
-        $('.main').append('<a href="' + nytUrl + '"><article class="main__article main__article--loading ' + article + '"><p class="main__caption">' + caption + '</p></article>');
-
-        
+        $('.main').append('<a target="_blank" href="' + nytUrl + '"><article class="main__article main__article--loading ' + article + '"><p class="main__caption">' + caption + '</p></article>');
         $('.' + article).css('background-image' , 'url(images/ajax-loader.gif)');
         
         //to wait for bg image to load before applying style

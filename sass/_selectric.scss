@@ -3,7 +3,7 @@
 ======================================*/
 $main-color     : #DDD;
 $secondary-color: #FFF;
-$bg-color       : #333745;
+$bg-color       : #2C3E50;
 $text-color     : #FFF;
 $height         : 40px;
 $spacing        : 10px;
@@ -20,7 +20,7 @@ $inner-height   : $height - ($border-width * 2);
 }
 
 .selectric {
-  border-radius: 6px;
+  border: solid $border-width $secondary-color;
   background: $bg-color;
   position: relative;
 
