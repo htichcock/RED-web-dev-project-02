@@ -20,7 +20,7 @@ $(function(){
     $('.main').empty().append('<img class="main__loading-img" src="images/ajax-loader.gif">');
   
     //fetch content--remove loading-gif--inject stories
-    $.getJSON('http://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(){
+    $.getJSON('https://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(){
       //same as .done() function so left empty
     }).done(function(data){
 
