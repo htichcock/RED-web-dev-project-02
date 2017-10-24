@@ -37,8 +37,10 @@
     line-height: 2.4rem;
     font-weight: 400;
     font-style: normal;
-    &--hidden {
+    &--dynamic {
       height: 0;
+      overflow: hidden;
+      transition: 0.8s ease-in-out;
     }
   }
   &__article {
@@ -50,6 +52,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover .main__caption--dynamic{
+      height: 15.2rem;
+    }
   }
   &__article--1 {
     grid-area: 1 / 1 / 2 / 2;
