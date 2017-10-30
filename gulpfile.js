@@ -23,9 +23,10 @@ gulp.task('sass', function() {
       .pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('scripts', ['babel', 'lint'], function() {
+gulp.task('scripts', ['lint', 'babel'], function() {
   gulp.src('./js/*.js')
       .pipe(plumber())
+      .pipe(babel())
       .pipe(uglify())
       .pipe(rename({ extname: '.min.js'}))
       .pipe(gulp.dest('./build/js'));
@@ -43,7 +44,7 @@ gulp.task('babel', () => {
   gulp.src('./js/*.js')
       .pipe(plumber())
       .pipe(babel())
-      .gulp;
+      .pipe(gulp.dest('./es5'));
 });
 
 gulp.task('browser-sync', function() {
