@@ -1,13 +1,14 @@
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    browserSync = require('browser-sync'),
-    eslint = require('gulp-eslint'),
-    prettyError = require('gulp-prettyerror'),
-    plumber = require('gulp-plumber')
-    sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssnano = require('gulp-cssnano');
+const gulp = require('gulp'),
+      uglify = require('gulp-uglify'),
+      rename = require('gulp-rename'),
+      browserSync = require('browser-sync'),
+      eslint = require('gulp-eslint'),
+      prettyError = require('gulp-prettyerror'),
+      plumber = require('gulp-plumber')
+      sass = require('gulp-sass'),
+      autoprefixer = require('gulp-autoprefixer'),
+      cssnano = require('gulp-cssnano'),
+      babel = require('gulp-babel');
 
 gulp.task('sass', function() {
   gulp.src('./sass/style.scss')
@@ -22,7 +23,7 @@ gulp.task('sass', function() {
       .pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('scripts', ['lint'], function() {
+gulp.task('scripts', ['babel', 'lint'], function() {
   gulp.src('./js/*.js')
       .pipe(plumber())
       .pipe(uglify())
@@ -38,6 +39,12 @@ gulp.task('lint', function(){
       .pipe(eslint.failAfterError());
 });
 
+gulp.task('babel', () => {
+  gulp.src('./js/*.js')
+      .pipe(plumber())
+      .pipe(babel())
+      .gulp;
+});
 
 gulp.task('browser-sync', function() {
   browserSync.init({
