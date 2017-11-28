@@ -5,7 +5,8 @@
   align-items: center;
   flex-flow: row wrap;
   width: 100%;
-  * , & {
+  *,
+  & {
     transition: 1s;
   }
   @include tablet {
@@ -42,7 +43,6 @@
     }
     @include desktop {
       font-size: 1.6rem;
-      
     }
   }
   &__choose-section {

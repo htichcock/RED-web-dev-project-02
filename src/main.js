@@ -3,14 +3,14 @@ import $ from 'jquery';
 import selectric from 'selectric';
 
 
-$(function(){
+$(function () {
   $('select').selectric();
   let touchScreen = 0;
-  $('body').on('touchstart', function() {
+  $('body').on('touchstart', function () {
     $('.main__caption').removeClass('main__caption--dynamic')
     touchScreen = 1;
   });
-  $('#choose-section').on('change', function() {
+  $('#choose-section').on('change', function () {
 
     //change to banner
     $('.dynamic-header')
@@ -23,16 +23,16 @@ $(function(){
 
     //empty main, inject loading gif
     $('.main').empty().append('<img class="main__loading-img" src="images/ajax-loader.gif">');
-  
+
     //fetch content--remove loading-gif--inject stories
-    $.getJSON('https://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() +'.json?api-key=b038a37bb5974147b7e6bf0e97916430', function(){
+    $.getJSON('https://api.nytimes.com/svc/topstories/v2/' + $('#choose-section').val() + '.json?api-key=b038a37bb5974147b7e6bf0e97916430', function () {
       //same as .done() function so left empty
-    }).done(function(data){
+    }).done(function (data) {
 
       //check to make sure last image over 400px exists
-      const results = data.results.filter(function(result){
-        if (result.multimedia.length){
-          if (result.multimedia[result.multimedia.length - 1].height >= 400){
+      const results = data.results.filter(function (result) {
+        if (result.multimedia.length) {
+          if (result.multimedia[result.multimedia.length - 1].height >= 400) {
             return true;
           }
         }
@@ -40,9 +40,9 @@ $(function(){
       // remove loading gif
       $('.main__loading-img').remove();
 
-      $.each(results , function( i , val ){
-        const count = (i+1);
-        const article = 'main__article--' + (i+1);
+      $.each(results, function (i, val) {
+        const count = (i + 1);
+        const article = 'main__article--' + (i + 1);
         const caption = val.abstract;
         const nytUrl = val.short_url;
         const imageUrl = val.multimedia[val.multimedia.length - 1].url;
@@ -53,12 +53,12 @@ $(function(){
           </article>
         </a>
         `);
-        $(`.${article}`).css('background-image' , 'url(images/ajax-loader.gif)');
-        
+        $(`.${article}`).css('background-image', 'url(images/ajax-loader.gif)');
+
         //to wait for bg image to load before applying style
         const img = new Image();
-        img.onload = function(){
-          $(`.${article}`).removeClass('main__article--loading').css('background-image' , `url(${imageUrl})`);
+        img.onload = function () {
+          $(`.${article}`).removeClass('main__article--loading').css('background-image', `url(${imageUrl})`);
           //hide caption if not touch screen
           if (!touchScreen) {
             $('.main__caption').addClass('main__caption--dynamic');
@@ -67,14 +67,13 @@ $(function(){
         img.src = imageUrl;
         //break .each loop after 12 iterations
         if (count === 12) {
-        return false;
+          return false;
         }
       });
-    }).fail(function(){
+    }).fail(function () {
       //empty .main inject error message
       $('.main').empty().append('<p> Request failed. Please try again </p>');
     });
     //did not include always to remove loading gif as it was just as easy to apply .empty() to the chain in .done and .fail
   });
 });
-

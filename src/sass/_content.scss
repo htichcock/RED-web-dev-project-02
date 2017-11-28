@@ -20,7 +20,7 @@
     @include desktop {
       grid-area: 1 / 1 / 2 / 1;
     }
-  }
+  } 
   // uses two classes for specificity reasons
   & &__article--loading {
     background-position: center;
@@ -28,7 +28,7 @@
     background-repeat: no-repeat;
   }
   &__caption {
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     height: auto;
     width: 100%;
     text-align: center;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover .main__caption--dynamic{
+    &:hover .main__caption--dynamic {
       height: 15.2rem;
     }
   }
