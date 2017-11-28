@@ -1,11 +1,16 @@
+import './sass/style.scss';
+import $ from 'jquery';
+import selectric from 'selectric';
+
+
 $(function(){
   $('select').selectric();
-   let touchScreen = 0;
-  $('body').on('touchstart', () => {
+  let touchScreen = 0;
+  $('body').on('touchstart', function() {
     $('.main__caption').removeClass('main__caption--dynamic')
     touchScreen = 1;
   });
-  $('#choose-section').on('change', () => {
+  $('#choose-section').on('change', function() {
 
     //change to banner
     $('.dynamic-header')
@@ -25,7 +30,7 @@ $(function(){
     }).done(function(data){
 
       //check to make sure last image over 400px exists
-      var results = data.results.filter(function(result){
+      const results = data.results.filter(function(result){
         if (result.multimedia.length){
           if (result.multimedia[result.multimedia.length - 1].height >= 400){
             return true;
@@ -36,25 +41,30 @@ $(function(){
       $('.main__loading-img').remove();
 
       $.each(results , function( i , val ){
-        var count = (i+1);
-        var article = 'main__article--' + (i+1);
-        var caption = val.abstract;
-        var nytUrl = val.short_url;
-        var imageUrl = val.multimedia[val.multimedia.length - 1].url;
-        $('.main').append('<a target="_blank" href="' + nytUrl + '"><article class="main__article main__article--loading ' + article + '"><p class="main__caption">' + caption + '</p></article>');
-        $('.' + article).css('background-image' , 'url(images/ajax-loader.gif)');
+        const count = (i+1);
+        const article = 'main__article--' + (i+1);
+        const caption = val.abstract;
+        const nytUrl = val.short_url;
+        const imageUrl = val.multimedia[val.multimedia.length - 1].url;
+        $('.main').append(`
+        <a target="_blank" href="${nytUrl}">
+          <article class="main__article main__article--loading ${article}">
+            <p class="main__caption">${caption}</p>
+          </article>
+        </a>
+        `);
+        $(`.${article}`).css('background-image' , 'url(images/ajax-loader.gif)');
         
         //to wait for bg image to load before applying style
-        var img = new Image();
+        const img = new Image();
         img.onload = function(){
-          $('.' + article).removeClass('main__article--loading').css('background-image' , 'url(' + imageUrl + ')');
+          $(`.${article}`).removeClass('main__article--loading').css('background-image' , `url(${imageUrl})`);
           //hide caption if not touch screen
           if (!touchScreen) {
             $('.main__caption').addClass('main__caption--dynamic');
           }
         };
         img.src = imageUrl;
-
         //break .each loop after 12 iterations
         if (count === 12) {
         return false;
@@ -67,8 +77,4 @@ $(function(){
     //did not include always to remove loading gif as it was just as easy to apply .empty() to the chain in .done and .fail
   });
 });
-
-
-
-
 
