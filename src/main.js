@@ -5,10 +5,10 @@ import selectric from 'selectric';
 
 $(function () {
   $('select').selectric();
-  let touchScreen = 0;
+  let touchScreen = false;
   $('body').on('touchstart', function () {
-    $('.main__caption').removeClass('main__caption--dynamic')
-    touchScreen = 1;
+    $('.main__caption').removeClass('main__caption--dynamic');
+    touchScreen = true;
   });
   $('#choose-section').on('change', function () {
 
@@ -60,7 +60,7 @@ $(function () {
         img.onload = function () {
           $(`.${article}`).removeClass('main__article--loading').css('background-image', `url(${imageUrl})`);
           //hide caption if not touch screen
-          if (!touchScreen) {
+          if (! touchScreen) {
             $('.main__caption').addClass('main__caption--dynamic');
           }
         };
