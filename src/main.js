@@ -1,8 +1,6 @@
-'use strict';
-
 $(function () {
   $('select').selectric();
-  var touchScreen = false;
+  let touchScreen = false;
   $('body').on('touchstart', function () {
     $('.main__caption').removeClass('main__caption--dynamic');
     touchScreen = true;
@@ -10,8 +8,12 @@ $(function () {
   $('#choose-section').on('change', function () {
 
     //change to banner
-    $('.dynamic-header').addClass('dynamic-header--banner').removeClass('dynamic-header--cover');
-    $('.dynamic-header__logo-img').addClass('dynamic-header--banner__logo-img').removeClass('dynamic-header--cover__logo-img');
+    $('.dynamic-header')
+      .addClass('dynamic-header--banner')
+      .removeClass('dynamic-header--cover');
+    $('.dynamic-header__logo-img')
+      .addClass('dynamic-header--banner__logo-img')
+      .removeClass('dynamic-header--cover__logo-img');
     $('.footer').css('margin', '4.8rem 0 4.8rem');
 
     //empty main, inject loading gif
@@ -23,7 +25,7 @@ $(function () {
     }).done(function (data) {
 
       //check to make sure last image over 400px exists
-      var results = data.results.filter(function (result) {
+      const results = data.results.filter(function (result) {
         if (result.multimedia.length) {
           if (result.multimedia[result.multimedia.length - 1].height >= 400) {
             return true;
@@ -34,20 +36,26 @@ $(function () {
       $('.main__loading-img').remove();
 
       $.each(results, function (i, val) {
-        var count = i + 1;
-        var article = 'main__article--' + (i + 1);
-        var caption = val.abstract;
-        var nytUrl = val.short_url;
-        var imageUrl = val.multimedia[val.multimedia.length - 1].url;
-        $('.main').append('\n        <a target="_blank" href="' + nytUrl + '">\n          <article class="main__article main__article--loading ' + article + '">\n            <p class="main__caption">' + caption + '</p>\n          </article>\n        </a>\n        ');
-        $('.' + article).css('background-image', 'url(images/ajax-loader.gif)');
+        const count = (i + 1);
+        const article = 'main__article--' + (i + 1);
+        const caption = val.abstract;
+        const nytUrl = val.short_url;
+        const imageUrl = val.multimedia[val.multimedia.length - 1].url;
+        $('.main').append(`
+        <a target="_blank" href="${nytUrl}">
+          <article class="main__article main__article--loading ${article}">
+            <p class="main__caption">${caption}</p>
+          </article>
+        </a>
+        `);
+        $(`.${article}`).css('background-image', 'url(images/ajax-loader.gif)');
 
         //to wait for bg image to load before applying style
-        var img = new Image();
+        const img = new Image();
         img.onload = function () {
-          $('.' + article).removeClass('main__article--loading').css('background-image', 'url(' + imageUrl + ')');
+          $(`.${article}`).removeClass('main__article--loading').css('background-image', `url(${imageUrl})`);
           //hide caption if not touch screen
-          if (!touchScreen) {
+          if (! touchScreen) {
             $('.main__caption').addClass('main__caption--dynamic');
           }
         };
