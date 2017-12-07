@@ -1,0 +1,59 @@
+.main {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  @include tablet {
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(3, 1fr)
+  }
+  @include desktop {
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(4, 1fr)
+  }
+  &__loading-img {
+    width: 4rem;
+    grid-area: 1 / 1 / 2 / 2;
+    @include tablet {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+    @include desktop {
+      grid-area: 1 / 1 / 2 / 1;
+    }
+  } 
+  // uses two classes for specificity reasons
+  & &__article--loading {
+    background-position: center;
+    background-size: 4rem 4rem;
+    background-repeat: no-repeat;
+  }
+  &__caption {
+    background: rgba(0, 0, 0, .5);
+    height: auto;
+    width: 100%;
+    text-align: center;
+    align-self: flex-end;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+    font-style: normal;
+    &--dynamic {
+      height: 0;
+      overflow: hidden;
+      transition: 0.8s ease-in-out;
+    }
+  }
+  &__article {
+    height: 40rem;
+    width: 100%;
+    background-position: center 20%; //to avoid decapitation
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover .main__caption--dynamic {
+      height: 15.2rem;
+    }
+  }
+}
