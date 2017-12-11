@@ -11,7 +11,7 @@ scss
 gulp
 jquery and plugins
 
-##Personal Learnings 
+## Personal Learnings 
 
 ### html
 On this project I gave using BEM naming a try, you'll also see this in my SCSS.
